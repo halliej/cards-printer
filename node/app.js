@@ -7,14 +7,25 @@ server.connection({
   port: process.env.port || 3000
 });
 
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: (request, reply) => {
-    reply('<h1>Hello Hapi!</h1>');
+/* eslint-disable global-require */
+server.register([
+  {
+    register: require('inert')
+  },
+  {
+    register: require('vision')
+  },
+  {
+    register: require('./core'),
+    options: {
+      data: require('../data/studentData.json')
+    }
+  }], error => {
+  if (error) {
+    console.log(`Error: ${error}`);
+  } else {
+    server.start(() => {
+      console.log(`Hapi server running at: ${server.info.uri}`);
+    });
   }
-});
-
-server.start(() => {
-  console.log(`Hapi server running at: ${server.info.uri}`);
 });
