@@ -11,5 +11,8 @@
   "devDependencies": {
     "eslint": "^3.17.1",
     "eslint-config-rallycoding": "^3.2.0"
+  },
+  "dependencies": {
+    "hapi": "^16.1.0"
   }
 }
