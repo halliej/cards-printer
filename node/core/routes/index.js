@@ -19,6 +19,13 @@ module.exports = function (options) {
           path: 'public'
         }
       }
+    },
+    {
+      method: 'GET',
+      path: '/babel/browser.min.js',
+      handler: {
+        file: 'node_modules/babel-core/browser.min.js'
+      }
     }
   ];
 };
